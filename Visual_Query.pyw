@@ -26,7 +26,7 @@ conn = pymssql.connect(
 
 pd.options.display.max_rows = 10000
 
-#shortcut key commands
+#commands
 def status():
     global top
     top = tk.Toplevel(master)
@@ -48,7 +48,7 @@ def run():
             msg.grid(row=0, column=1)
         else:
             df = pandas.io.sql.read_sql(sql, conn)
-            df.to_csv("C:/Users/michael/Desktop/REPORTS/" + filename + ".csv", index=False)
+            df.to_csv("C:/Users/Desktop/REPORTS/" + filename + ".csv", index=False)
             os.startfile(file)
             top = tk.Toplevel(master)
             top.title('Finished')
@@ -78,36 +78,6 @@ def reset(event=None):
 def selectNext(event):
     event.widget.tk_focusNext().focus()
     return("break")
-
-#menubar commands
-def runFromMenu():
-    try:
-        sql = e.get('1.0', tk.END)
-        filename = e2.get()
-        file = "C:/Users/michael/Desktop/REPORTS/" + filename + ".csv"
-        if filename == '':
-            top = tk.Toplevel(master)
-            top.title('Error')
-            msg = tk.Message(top, text="Please Provide File Name         ", width=750)
-            msg.grid(row=0, column=1)
-        else:
-            df = pandas.io.sql.read_sql(sql, conn)
-            df.to_csv("C:/Users/michael/Desktop/REPORTS/" + filename + ".csv", index=False)
-            os.startfile(file)
-            top = tk.Toplevel(master)
-            top.title('Finished')
-            msg = tk.Message(top, text="Query Executed Successfully         ", width=750)
-            msg.grid(row=0, column=1)
-    except:
-        top = tk.Toplevel(master)
-        top.title('Error')
-        msg = tk.Message(top, text="SQL Error! Please check your query             ", width=750)
-        msg.grid(row=0, column=1)
-    
-def resetFromMenu():
-   e.delete('1.0', tk.END)
-   e2.delete(0, 'end')
-   e.focus_set()
 
 menubar = tk.Menu(master)
 menubar.add_command(label="Run", command=runFromMenu)
