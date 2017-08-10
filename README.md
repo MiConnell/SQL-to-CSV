@@ -1,4 +1,4 @@
 # Query-Visual
 Queries Infor Visual Database and creates spreadsheet from query results
 
-![Example GIF](https://gfycat.com/gifs/detail/DisastrousQuerulousDragon)
+![Example GIF](https://thumbs.gfycat.com/DisastrousQuerulousDragon-size_restricted.gif)
